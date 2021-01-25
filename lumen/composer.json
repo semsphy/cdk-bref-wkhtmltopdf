@@ -9,6 +9,8 @@
         "barryvdh/laravel-snappy": "^0.4.8",
         "bref/bref": "^1.1",
         "bref/extra-php-extensions": "^0.9.5",
+        "bref/laravel-bridge": "^1.0",
+        "irazasyed/telegram-bot-sdk": "^3.4",
         "laravel/lumen-framework": "^8.0",
         "laravel/tinker": "^2.5"
     },

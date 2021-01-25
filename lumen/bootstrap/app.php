@@ -66,6 +66,8 @@ $app->singleton(
 
 $app->configure('app');
 $app->configure('snappy');
+$app->configure('queue');
+$app->configure('telegram');
 
 /*
 |--------------------------------------------------------------------------
@@ -100,6 +102,7 @@ $app->configure('snappy');
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(TinkerServiceProvider::class);
+$app->register(Telegram\Bot\Laravel\TelegramServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

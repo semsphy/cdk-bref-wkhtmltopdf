@@ -2,8 +2,11 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+use App\Jobs\ProcessPodcast;
+use App\Jobs\SendToTelegram;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +38,21 @@ $router->get('/', function () use ($router) {
 
 $router->get('/modules', function () use ($router) {
     return response(get_loaded_extensions());
+});
+
+$router->get('/telegram/info', function () use ($router) {
+    $response = Telegram::getMe();
+
+    $botId = $response->getId();
+    $firstName = $response->getFirstName();
+    $username = $response->getUsername();
+
+    return response(compact('botId', 'firstName', 'username'));
+});
+
+$router->get('/queue', function () use ($router) {
+
+    dispatch(new SendToTelegram('251017456', 'HELLO ME'));
+
+    return response('dispatched');
 });
